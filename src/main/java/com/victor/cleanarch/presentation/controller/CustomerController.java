@@ -49,7 +49,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UpdateCustomerResponseDTO> update(@NotBlank @PathVariable String id, UpdateCustomerRequestDTO dto) {
+    public ResponseEntity<UpdateCustomerResponseDTO> update(@NotBlank @PathVariable String id, @Valid @RequestBody UpdateCustomerRequestDTO dto) {
         dto.setId(id);
         Customer customer = customerMapper.fromUpdateRequestDTOtoEntity(dto);
         Customer entity = updateCustomerUseCase.update(customer, dto.getZipCode());
