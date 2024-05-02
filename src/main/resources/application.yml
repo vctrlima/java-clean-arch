@@ -6,4 +6,9 @@ victor:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/clean-arch
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      username: root
+      password: admin
+      database: clean-arch
