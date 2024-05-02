@@ -14,7 +14,7 @@ public class FindCustomerByIdUseCaseImpl implements FindCustomerByIdUseCase {
     private FindCustomerByIdRepository findCustomerByIdRepository;
 
     @Override
-    public Customer findCustomerById(String id) {
+    public Customer findById(String id) {
         return findCustomerByIdRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Customer with ID %s not found", id)));
     }

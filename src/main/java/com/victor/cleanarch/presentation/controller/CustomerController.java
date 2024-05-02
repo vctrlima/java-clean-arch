@@ -39,7 +39,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<FindCustomerByIdResponseDTO> findById(@NotBlank @PathVariable String id) {
-        Customer entity = findCustomerByIdUseCase.findCustomerById(id);
+        Customer entity = findCustomerByIdUseCase.findById(id);
         FindCustomerByIdResponseDTO response = customerMapper.fromEntityToFindByIdResponseDTO(entity);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

@@ -23,7 +23,7 @@ public class UpdateCustomerUseCaseImpl implements UpdateCustomerUseCase {
     @Override
     public Customer update(Customer customer, String zipCode) {
         customer.setAddress(findAddressByZipCode.find(zipCode));
-        findCustomerByIdUseCase.findCustomerById(customer.getId());
+        findCustomerByIdUseCase.findById(customer.getId());
         return updateCustomerRepository.update(customer);
     }
 

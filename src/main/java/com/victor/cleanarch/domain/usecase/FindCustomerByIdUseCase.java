@@ -4,6 +4,6 @@ import com.victor.cleanarch.domain.entity.Customer;
 
 public interface FindCustomerByIdUseCase {
 
-    Customer findCustomerById(String id);
+    Customer findById(String id);
 
 }
