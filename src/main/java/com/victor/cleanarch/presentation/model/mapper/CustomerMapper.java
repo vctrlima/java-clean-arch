@@ -1,9 +1,7 @@
 package com.victor.cleanarch.presentation.model.mapper;
 
 import com.victor.cleanarch.domain.entity.Customer;
-import com.victor.cleanarch.presentation.model.dto.FindCustomerByIdResponseDTO;
-import com.victor.cleanarch.presentation.model.dto.InsertCustomerRequestDTO;
-import com.victor.cleanarch.presentation.model.dto.InsertCustomerResponseDTO;
+import com.victor.cleanarch.presentation.model.dto.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,4 +16,10 @@ public interface CustomerMapper {
     InsertCustomerResponseDTO fromEntityToInsertResponseDTO(Customer entity);
 
     FindCustomerByIdResponseDTO fromEntityToFindByIdResponseDTO(Customer entity);
+
+    @Mapping(target = "address", ignore = true)
+    @Mapping(target = "documentIsValid", ignore = true)
+    Customer fromUpdateRequestDTOtoEntity(UpdateCustomerRequestDTO dto);
+
+    UpdateCustomerResponseDTO fromEntityToUpdateResponseDTO(Customer entity);
 }

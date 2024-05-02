@@ -3,10 +3,9 @@ package com.victor.cleanarch.presentation.controller;
 import com.victor.cleanarch.domain.entity.Customer;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.InsertCustomerUseCase;
+import com.victor.cleanarch.domain.usecase.UpdateCustomerUseCase;
 import com.victor.cleanarch.main.exception.ResourceNotFoundException;
-import com.victor.cleanarch.presentation.model.dto.FindCustomerByIdResponseDTO;
-import com.victor.cleanarch.presentation.model.dto.InsertCustomerRequestDTO;
-import com.victor.cleanarch.presentation.model.dto.InsertCustomerResponseDTO;
+import com.victor.cleanarch.presentation.model.dto.*;
 import com.victor.cleanarch.presentation.model.mapper.CustomerMapper;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -26,6 +25,9 @@ public class CustomerController {
     private FindCustomerByIdUseCase findCustomerByIdUseCase;
 
     @Autowired
+    private UpdateCustomerUseCase updateCustomerUseCase;
+
+    @Autowired
     private CustomerMapper customerMapper;
 
     @PostMapping
@@ -38,9 +40,18 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<FindCustomerByIdResponseDTO> findById(@NotBlank @PathVariable String id) {
-        Customer entity = findCustomerByIdUseCase.findCustomerById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Customer with ID %s not found", id)));
+        Customer entity = findCustomerByIdUseCase.findCustomerById(id);
         FindCustomerByIdResponseDTO response = customerMapper.fromEntityToFindByIdResponseDTO(entity);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UpdateCustomerResponseDTO> update(@NotBlank @PathVariable String id, UpdateCustomerRequestDTO dto) {
+        dto.setId(id);
+        Customer customer = customerMapper.fromUpdateRequestDTOtoEntity(dto);
+        Customer entity = updateCustomerUseCase.update(customer, dto.getZipCode());
+        UpdateCustomerResponseDTO response = customerMapper.fromEntityToUpdateResponseDTO(entity);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }

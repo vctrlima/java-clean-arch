@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface FindCustomerByIdUseCase {
 
-    Optional<Customer> findCustomerById(String id);
+    Customer findCustomerById(String id);
 
 }

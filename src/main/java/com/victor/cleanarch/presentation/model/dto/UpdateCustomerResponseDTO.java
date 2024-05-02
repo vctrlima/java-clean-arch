@@ -4,7 +4,7 @@ import com.victor.cleanarch.domain.entity.Address;
 import lombok.Data;
 
 @Data
-public class InsertCustomerResponseDTO {
+public class UpdateCustomerResponseDTO {
 
     private String id;
 

@@ -1,19 +1,19 @@
 package com.victor.cleanarch.presentation.model.dto;
 
-import com.victor.cleanarch.domain.entity.Address;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class InsertCustomerResponseDTO {
-
+public class UpdateCustomerRequestDTO {
     private String id;
 
+    @NotBlank
     private String name;
 
+    @NotBlank
     private String document;
 
-    private Address address;
-
-    private Boolean documentIsValid;
+    @NotBlank
+    private String zipCode;
 
 }
