@@ -1,6 +1,6 @@
-package com.victor.cleanarch.data.protocols.remote.impl;
+package com.victor.cleanarch.data.protocol.remote.impl;
 
-import com.victor.cleanarch.data.protocols.remote.FindAddressByZipCode;
+import com.victor.cleanarch.data.protocol.remote.FindAddressByZipCode;
 import com.victor.cleanarch.domain.entity.Address;
 import com.victor.cleanarch.infra.client.FindAddressByZipCodeClient;
 import org.springframework.beans.factory.annotation.Autowired;

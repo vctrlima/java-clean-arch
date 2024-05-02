@@ -1,4 +1,4 @@
-package com.victor.cleanarch.data.protocols.db;
+package com.victor.cleanarch.data.protocol.db;
 
 import com.victor.cleanarch.domain.entity.Customer;
 

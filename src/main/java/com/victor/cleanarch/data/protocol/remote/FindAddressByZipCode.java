@@ -1,4 +1,4 @@
-package com.victor.cleanarch.data.protocols.remote;
+package com.victor.cleanarch.data.protocol.remote;
 
 import com.victor.cleanarch.domain.entity.Address;
 

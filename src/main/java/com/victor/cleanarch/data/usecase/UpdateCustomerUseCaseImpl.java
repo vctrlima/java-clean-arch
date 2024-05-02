@@ -1,7 +1,7 @@
 package com.victor.cleanarch.data.usecase;
 
-import com.victor.cleanarch.data.protocols.db.UpdateCustomerRepository;
-import com.victor.cleanarch.data.protocols.remote.FindAddressByZipCode;
+import com.victor.cleanarch.data.protocol.db.UpdateCustomerRepository;
+import com.victor.cleanarch.data.protocol.remote.FindAddressByZipCode;
 import com.victor.cleanarch.domain.entity.Customer;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.UpdateCustomerUseCase;

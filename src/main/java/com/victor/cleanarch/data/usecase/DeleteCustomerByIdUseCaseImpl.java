@@ -1,6 +1,6 @@
 package com.victor.cleanarch.data.usecase;
 
-import com.victor.cleanarch.data.protocols.db.DeleteCustomerByIdRepository;
+import com.victor.cleanarch.data.protocol.db.DeleteCustomerByIdRepository;
 import com.victor.cleanarch.domain.usecase.DeleteCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;

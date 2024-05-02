@@ -1,6 +1,6 @@
-package com.victor.cleanarch.data.protocols.db.impl;
+package com.victor.cleanarch.data.protocol.db.impl;
 
-import com.victor.cleanarch.data.protocols.db.UpdateCustomerRepository;
+import com.victor.cleanarch.data.protocol.db.UpdateCustomerRepository;
 import com.victor.cleanarch.domain.entity.Customer;
 import com.victor.cleanarch.infra.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

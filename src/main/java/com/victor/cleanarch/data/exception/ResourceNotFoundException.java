@@ -1,4 +1,4 @@
-package com.victor.cleanarch.main.exception;
+package com.victor.cleanarch.data.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
