@@ -5,7 +5,6 @@ import com.victor.cleanarch.data.protocols.remote.FindAddressByZipCode;
 import com.victor.cleanarch.domain.entity.Customer;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.UpdateCustomerUseCase;
-import com.victor.cleanarch.main.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

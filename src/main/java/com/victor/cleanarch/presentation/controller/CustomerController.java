@@ -4,7 +4,6 @@ import com.victor.cleanarch.domain.entity.Customer;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.InsertCustomerUseCase;
 import com.victor.cleanarch.domain.usecase.UpdateCustomerUseCase;
-import com.victor.cleanarch.main.exception.ResourceNotFoundException;
 import com.victor.cleanarch.presentation.model.dto.*;
 import com.victor.cleanarch.presentation.model.mapper.CustomerMapper;
 import jakarta.validation.Valid;
