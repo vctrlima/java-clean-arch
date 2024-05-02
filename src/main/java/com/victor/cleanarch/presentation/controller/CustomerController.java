@@ -3,6 +3,7 @@ package com.victor.cleanarch.presentation.controller;
 import com.victor.cleanarch.domain.entity.Customer;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.InsertCustomerUseCase;
+import com.victor.cleanarch.main.exception.ResourceNotFoundException;
 import com.victor.cleanarch.presentation.model.dto.FindCustomerByIdResponseDTO;
 import com.victor.cleanarch.presentation.model.dto.InsertCustomerRequestDTO;
 import com.victor.cleanarch.presentation.model.dto.InsertCustomerResponseDTO;
@@ -13,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/customers")
@@ -39,11 +38,9 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<FindCustomerByIdResponseDTO> findById(@NotBlank @PathVariable String id) {
-        Optional<Customer> entity = findCustomerByIdUseCase.findCustomerById(id);
-        if (entity.isEmpty()) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
-        FindCustomerByIdResponseDTO response = customerMapper.fromEntityToFindByIdResponseDTO(entity.get());
+        Customer entity = findCustomerByIdUseCase.findCustomerById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Customer with ID %s not found", id)));
+        FindCustomerByIdResponseDTO response = customerMapper.fromEntityToFindByIdResponseDTO(entity);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
