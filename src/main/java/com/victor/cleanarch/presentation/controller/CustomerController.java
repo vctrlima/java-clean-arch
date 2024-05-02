@@ -1,6 +1,7 @@
 package com.victor.cleanarch.presentation.controller;
 
 import com.victor.cleanarch.domain.entity.Customer;
+import com.victor.cleanarch.domain.usecase.DeleteCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.FindCustomerByIdUseCase;
 import com.victor.cleanarch.domain.usecase.InsertCustomerUseCase;
 import com.victor.cleanarch.domain.usecase.UpdateCustomerUseCase;
@@ -27,6 +28,9 @@ public class CustomerController {
     private UpdateCustomerUseCase updateCustomerUseCase;
 
     @Autowired
+    private DeleteCustomerByIdUseCase deleteCustomerByIdUseCase;
+
+    @Autowired
     private CustomerMapper customerMapper;
 
     @PostMapping
@@ -51,6 +55,12 @@ public class CustomerController {
         Customer entity = updateCustomerUseCase.update(customer, dto.getZipCode());
         UpdateCustomerResponseDTO response = customerMapper.fromEntityToUpdateResponseDTO(entity);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@NotBlank @PathVariable String id) {
+        deleteCustomerByIdUseCase.deleteById(id);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
 }
