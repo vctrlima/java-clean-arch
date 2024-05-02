@@ -45,7 +45,7 @@ public class CustomerController {
     public ResponseEntity<FindCustomerByIdResponseDTO> findById(@NotBlank @PathVariable String id) {
         Customer entity = findCustomerByIdUseCase.findById(id);
         FindCustomerByIdResponseDTO response = customerMapper.fromEntityToFindByIdResponseDTO(entity);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.ok().body(response);
     }
 
     @PutMapping("/{id}")
@@ -54,13 +54,13 @@ public class CustomerController {
         Customer customer = customerMapper.fromUpdateRequestDTOtoEntity(dto);
         Customer entity = updateCustomerUseCase.update(customer, dto.getZipCode());
         UpdateCustomerResponseDTO response = customerMapper.fromEntityToUpdateResponseDTO(entity);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@NotBlank @PathVariable String id) {
         deleteCustomerByIdUseCase.deleteById(id);
-        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 
 }
