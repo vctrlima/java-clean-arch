@@ -41,9 +41,7 @@ class DeleteCustomerByIdUseCaseImplTest {
         String exceptionMessage = String.format("Customer with ID %s not found", id);
         when(findCustomerByIdUseCase.findById(id)).thenThrow(new ResourceNotFoundException(exceptionMessage));
 
-        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> {
-            deleteCustomerByIdUseCase.deleteById(id);
-        });
+        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> deleteCustomerByIdUseCase.deleteById(id));
 
         assertEquals(exceptionMessage, exception.getMessage());
     }

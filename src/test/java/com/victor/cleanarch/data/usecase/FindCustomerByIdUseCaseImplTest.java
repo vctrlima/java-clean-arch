@@ -11,7 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -41,9 +42,7 @@ class FindCustomerByIdUseCaseImplTest {
         when(findCustomerByIdRepository.findById(id)).thenReturn(Optional.empty());
         String exceptionMessage = String.format("Customer with ID %s not found", id);
 
-        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> {
-            findCustomerByIdUseCase.findById(id);
-        });
+        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> findCustomerByIdUseCase.findById(id));
 
         assertEquals(exceptionMessage, exception.getMessage());
     }
